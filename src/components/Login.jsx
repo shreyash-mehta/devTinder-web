@@ -1,14 +1,14 @@
 import { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import  { addUser }  from "../utils/userSlice";
+import { addUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constants";
-
 
 const Login = () => {
   const [emailId, setEmailId] = useState("jassi@gmail.com");
   const [password, setPassword] = useState("Jassi@123");
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -25,6 +25,7 @@ const Login = () => {
       dispatch(addUser(res.data));
       return navigate("/");
     } catch (err) {
+      setError(err?.response?.data || "Something went wrong");
       console.log(err);
     }
   };
@@ -57,6 +58,7 @@ const Login = () => {
           </div>
 
           <div className="card-actions justify-center">
+            <p className="text-red-500">{error}</p>
             <button className="btn btn-primary" onClick={handleLogin}>
               Login
             </button>

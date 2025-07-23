@@ -17,6 +17,7 @@ const Premium = () => {
       setIsUserPremium(true);
     }
   };
+
   const handleBuyClick = async (type) => {
     const order = await axios.post(
       BASE_URL + "/payment/create",

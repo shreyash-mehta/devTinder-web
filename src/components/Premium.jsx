@@ -28,7 +28,7 @@ const Premium = () => {
         color: "#F37254",
       },
     };
-    // this will open the razorpay dialogue box...
+    // this will open the razorpay dialogue box..
     const rzp = new window.Razorpay(options);
     rzp.open();
   };

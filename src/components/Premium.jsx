@@ -3,18 +3,18 @@ import { BASE_URL } from "../utils/constants";
 import { useEffect, useState } from "react";
 
 const Premium = () => {
+  const [isUserPremium, setIsUserPremium] = useState(false);
+
   useEffect(() => {
     verifyPremiumUser();
   }, []);
 
-  const [isUserPremium, setIsUserPremium] = useState(false);
   const verifyPremiumUser = async () => {
-    const res = await axios.get(BASE_URL + "/payment/verify", {
+    const res = await axios.get(BASE_URL + "/premium/verify", {
       withCredentials: true,
     });
     if (res.data.isPremium) {
       setIsUserPremium(true);
-    } else {
     }
   };
   const handleBuyClick = async (type) => {
@@ -42,7 +42,7 @@ const Premium = () => {
       theme: {
         color: "#F37254",
       },
-      handler: { verifyPremiumUser },
+      handler: verifyPremiumUser,
     };
 
     // this will open the razorpay dialogue box..

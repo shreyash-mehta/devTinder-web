@@ -5,4 +5,5 @@ import { BASE_URL } from "./src/utils/constants";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: './',
 });
